@@ -25,4 +25,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build Windows container
-        run: docker build --build-arg SERVERCORE_VERSION=$${{ matrix.servercore-version }} -t rossimarco/miniconda3:$${{ matrix.servercore-version }} miniconda3
+        run: docker build --build-arg SERVERCORE_VERSION=${{ matrix.servercore-version }} -t rossimarco/miniconda3:${{ matrix.servercore-version }} miniconda3
