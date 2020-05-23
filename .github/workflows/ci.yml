@@ -1,0 +1,28 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  release:
+    types:
+      - published
+  schedule:
+    - cron: '0 12 * * 6'
+
+defaults:
+  run:
+    shell: powershell
+
+jobs:
+  docker-build:
+    name: docker-build (servercore ${{ matrix.servercore-version }})
+    runs-on: 'windows-latest'
+    strategy:
+      matrix:
+        servercore-version: ['1803', '1809', 'ltsc2019', '1903', '1909']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Windows container
+        run: docker build --build-arg SERVERCORE_VERSION=$${{ matrix.servercore-version }} -t rossimarco/miniconda3:$${{ matrix.servercore-version }} miniconda3
