@@ -24,5 +24,9 @@ jobs:
         servercore-version: ['1803', '1809', 'ltsc2019', '1903', '1909']
     steps:
       - uses: actions/checkout@v2
+      - name: Check images
+        run: docker images
+      - name: Pull image
+        run: docker pull mcr.microsoft.com/windows/servercore:${{ matrix.servercore-version }}
       - name: Build Windows container
         run: docker build --build-arg SERVERCORE_VERSION=${{ matrix.servercore-version }} -t rossimarco/miniconda3:${{ matrix.servercore-version }} miniconda3
