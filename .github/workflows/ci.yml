@@ -21,7 +21,7 @@ jobs:
     runs-on: 'windows-latest'
     strategy:
       matrix:
-        servercore-version: ['1803', '1809', 'ltsc2019', '1903', '1909']
+        servercore-version: ['1803', '1803-amd64', '1809', '1809-amd64', 'ltsc2019', 'ltsc2019-amd64', '1903', '1903-amd64', '1909', '1909-amd64']
     steps:
       - uses: actions/checkout@v2
       - name: Docker info
