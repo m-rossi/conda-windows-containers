@@ -24,6 +24,8 @@ jobs:
         servercore-version: ['1803', '1809', 'ltsc2019', '1903', '1909']
     steps:
       - uses: actions/checkout@v2
+      - name: Docker info
+        run: docker info
       - name: Check images
         run: docker images
       - name: Pull image
