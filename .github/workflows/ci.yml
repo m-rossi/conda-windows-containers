@@ -24,9 +24,11 @@ jobs:
         servercore-version: ['1803', '1803-amd64', '1809', '1809-amd64', 'ltsc2019', 'ltsc2019-amd64', '1903', '1903-amd64', '1909', '1909-amd64']
     steps:
       - uses: actions/checkout@v2
-      - uses: docker/build-push-action@v1
-        with:
-          dockerfile: miniconda3
-          build_args: SERVERCORE_VERSION=${{ matrix.servercore-version }}
-          tags: miniconda3:servercore-${{ matrix.servercore-version }}
-          push: false
+      - name: Docker info
+        run: docker info
+      - name: Check images
+        run: docker images
+      - name: Pull image
+        run: docker pull mcr.microsoft.com/windows/servercore:${{ matrix.servercore-version }}
+      - name: Build Windows container
+        run: docker build --build-arg SERVERCORE_VERSION=${{ matrix.servercore-version }} -t rossimarco/miniconda3:${{ matrix.servercore-version }} miniconda3
