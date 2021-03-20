@@ -22,6 +22,7 @@ jobs:
     strategy:
       matrix:
         servercore-version: ['1803', '1803-amd64', '1809', '1809-amd64', 'ltsc2019', 'ltsc2019-amd64', '1903', '1903-amd64', '1909', '1909-amd64']
+        miniforge-version: ['4.9.2-7']
     steps:
       - uses: actions/checkout@v2
       - name: Docker info
@@ -31,4 +32,4 @@ jobs:
       - name: Pull image
         run: docker pull mcr.microsoft.com/windows/servercore:${{ matrix.servercore-version }}
       - name: Build Windows container
-        run: docker build --build-arg SERVERCORE_VERSION=${{ matrix.servercore-version }} -t rossimarco/miniconda3:${{ matrix.servercore-version }} miniconda3
+        run: docker build --build-arg SERVERCORE_VERSION=${{ matrix.servercore-version }} -t rossimarco/miniforge3:${{ matrix.servercore-version }} miniforge3
