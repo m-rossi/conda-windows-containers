@@ -1,0 +1,35 @@
+name: "CI"
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  release:
+    types:
+      - published
+  schedule:
+    - cron: '0 12 * * 6'
+
+defaults:
+  run:
+    shell: powershell
+
+jobs:
+  docker-build:
+    name: docker-build (servercore ${{ matrix.servercore-version }})
+    runs-on: 'windows-latest'
+    strategy:
+      matrix:
+        servercore-version: ['1803', '1803-amd64', '1809', '1809-amd64', 'ltsc2019', 'ltsc2019-amd64', '1903', '1903-amd64', '1909', '1909-amd64']
+        miniforge-version: ['4.9.2-7']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker info
+        run: docker info
+      - name: Check images
+        run: docker images
+      - name: Pull image
+        run: docker pull mcr.microsoft.com/windows/servercore:${{ matrix.servercore-version }}
+      - name: Build Windows container
+        run: docker build --build-arg SERVERCORE_VERSION=${{ matrix.servercore-version }} -t rossimarco/miniforge3:${{ matrix.servercore-version }} miniforge3
