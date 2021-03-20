@@ -1,5 +1,5 @@
 jobs:
-- job: 'build image'
+- job: 'build-image'
   pool:
     vmImage: 'windows-latest'
   steps:
