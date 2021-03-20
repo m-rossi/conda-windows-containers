@@ -13,9 +13,9 @@ This repository contains the Dockerfiles to build Windows containers with [conda
 ## Build
 
 ```powershell
-docker build --build-arg SERVERCORE_VERSION=1909 -t rossimarco/miniconda3:latest -t rossimarco/miniconda3:1909 miniconda3
-docker build --build-arg SERVERCORE_VERSION=1903 -t rossimarco/miniconda3:1903 miniconda3
-docker build --build-arg SERVERCORE_VERSION=ltsc2019 -t rossimarco/miniconda3:ltsc2019 miniconda3
-docker build --build-arg SERVERCORE_VERSION=1809 -t rossimarco/miniconda3:1809 miniconda3
-docker build --build-arg SERVERCORE_VERSION=1803 -t rossimarco/miniconda3:1803 miniconda3
+docker build --build-arg SERVERCORE_VERSION=1909 -t rossimarco/miniforge3:latest -t rossimarco/miniforge3:1909 miniforge3
+docker build --build-arg SERVERCORE_VERSION=1903 -t rossimarco/miniforge3:1903 miniforge3
+docker build --build-arg SERVERCORE_VERSION=ltsc2019 -t rossimarco/miniforge3:ltsc2019 miniforge3
+docker build --build-arg SERVERCORE_VERSION=1809 -t rossimarco/miniforge3:1809 miniforge3
+docker build --build-arg SERVERCORE_VERSION=1803 -t rossimarco/miniforge3:1803 miniforge3
 ```
