@@ -1,0 +1,10 @@
+jobs:
+- job: 'docker-build'
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - task: Docker@2
+    displayName: Build miniforge3 image
+    inputs:
+      command: build
+      Dockerfile: miniforge3/Dockerfile
