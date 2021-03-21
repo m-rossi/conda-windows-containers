@@ -7,7 +7,7 @@ trigger:
     - '*'
 
 jobs:
-- job: 'build-image'
+- job: 'build'
   pool:
     vmImage: 'windows-latest'
   steps:
