@@ -15,4 +15,5 @@ jobs:
     displayName: Build miniforge3 image
     inputs:
       command: build
+      container: servercore-1909
       Dockerfile: miniforge3/Dockerfile
